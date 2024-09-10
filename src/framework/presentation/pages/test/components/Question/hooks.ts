@@ -86,14 +86,15 @@ function useActions({
     const { onChoose, onComplete, onSelectCorrect, onSelectWrong, onNext } = useContext(TestContext);
     const confirmAnswer = React.useCallback(() => {
         disableAnswer(selectedId);
-        setTotalChosedTimes(totalChosedTimes + 1);
+        const newTotalChosedTimes = totalChosedTimes + 1;
+        setTotalChosedTimes(newTotalChosedTimes);
 
         const { correctMessage, wrongMessage } = pageTestConstant;
 
         if (selectedId === rightAnswer?.id) {
             onSelectCorrect(correctMessage);
             onComplete();
-            onChoose(totalChosedTimes);
+            onChoose(newTotalChosedTimes);
             complete();
         } else {
             onSelectWrong(wrongMessage);

@@ -1,13 +1,14 @@
+import { StringHelper } from '@/core/helpers/StringHelper';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function useGetRouteDataAsNumber(name: string, defaultValue: number = 0) {
+export default function useGetRouteDataAsString(name: string, defaultValue: string = '') {
     const { state } = useLocation();
 
     const result = React.useMemo(() => {
         const value = state[name];
-        if (value) {
-            return Number.parseInt(value);
+        if (value && StringHelper.isHasValue(value)) {
+            return value;
         }
 
         return defaultValue;

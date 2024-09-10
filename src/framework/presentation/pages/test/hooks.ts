@@ -22,9 +22,9 @@ export function useTest() {
 
     React.useEffect(() => {
         if (isCompleted) {
-            // Navigator.getRouter().navigateToCompletedTopic(totalCorrectAnswersText, testResultMessage);
+            Navigator.getRouter().navigateToCompletedTopic(totalCorrectAnswersText, testResultMessage);
         }
-    }, [isCompleted]);
+    }, [isCompleted, testResultMessage, totalCorrectAnswersText]);
 
     const { showMessage: showSuccessMessage } = useShowSuccessMessage();
     const { showMessage: showErrorMessage } = useShowErrorMessage();
@@ -49,33 +49,42 @@ function useQuestionaire(list: VocabularyEntity[]) {
     const [currentQuestion, setCurrentQuestion] = React.useState<QuestionaireEntity<VocabularyEntity>>();
     const [progressText, setProgressText] = React.useState('');
     const [progressPercent, setProgressPercent] = React.useState(0);
-    const initNewQuestion = () => {
+
+    const [result, setResult] = React.useState<QuestionaireRepositoryInterface<VocabularyEntity>>(new VocabularyQuestionaireRepository());
+    const initNewQuestion = React.useCallback(() => {
         setCurrentQuestion(result.getCurrentQuestion());
         setProgressText(result.getProgressInText());
         setProgressPercent(result.getProgressInPercent());
+        setIsCompleted(result.isCompleted());
         randomType();
-    };
+    }, [randomType, result]);
 
-    const [result, setResult] = React.useState<QuestionaireRepositoryInterface<VocabularyEntity>>(new VocabularyQuestionaireRepository());
     React.useEffect(() => {
         setResult(result.initializeListQuestions(list));
         initNewQuestion();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const isCompleted = React.useMemo(() => result.isCompleted(), [result]);
-    const totalCorrectAnswersText = React.useMemo(() => result.getTotalCorrectAnswersText(), [result]);
-    const testResultMessage = React.useMemo(() => result.getTestResultMessage(), [result]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const [isCompleted, setIsCompleted] = React.useState(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const totalCorrectAnswersText = React.useMemo(() => result.getTotalCorrectAnswersText(), [isCompleted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const testResultMessage = React.useMemo(() => result.getTestResultMessage(), [isCompleted]);
 
-    const next = () => {
-        result.nextQuestion();
+    const next = React.useCallback(() => {
+        setResult(result.nextQuestion());
         initNewQuestion();
-    };
+    }, [initNewQuestion, result]);
 
-    const choose = (totalChosedTimes: number) => {
-        if (totalChosedTimes === 1) {
-            result.increaseTotalCorrectAnswers();
-        }
-    };
+    const choose = React.useCallback(
+        (totalChosedTimes: number) => {
+            if (totalChosedTimes === 1) {
+                setResult(result.increaseTotalCorrectAnswers());
+            }
+        },
+        [result],
+    );
 
     return {
         next,

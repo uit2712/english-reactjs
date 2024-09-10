@@ -23,10 +23,13 @@ export const questionaireSlice = createSlice({
         getListSelectedVocabularies: (state) => state.listSelectedVocabularies,
         getSelectedTopic: (state) => state.selectedTopic,
         getSelectedGroup: (state) => state.selectedGroup,
+        getSelectedGroupId: (state) => (state.selectedGroup ? state.selectedGroup.id : 0),
+        getSelectedTopicId: (state) => (state.selectedTopic ? state.selectedTopic.id : 0),
     },
 });
 
 export const { setListSelectedVocabularies, setSelectedGroup, setSelectedTopic } = questionaireSlice.actions;
-export const { getListSelectedVocabularies, getSelectedGroup, getSelectedTopic } = questionaireSlice.selectors;
+export const { getListSelectedVocabularies, getSelectedGroup, getSelectedTopic, getSelectedGroupId, getSelectedTopicId } =
+    questionaireSlice.selectors;
 
 export const questionaireReducer = questionaireSlice.reducer;

@@ -11,7 +11,7 @@ export function RouterSetter() {
         Navigator.getRouter().setRouter(navigate);
         Navigator.getRoute().setRouteData(location.state);
         Navigator.getRoute().setRouteQueryData(searchParams);
-    }, [location, navigate]);
+    }, [location, navigate, searchParams]);
 
     return null;
 }
