@@ -1,5 +1,5 @@
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
-import GroupItem from '../GroupItem';
+import GroupItem from '../group-item';
 
 export default function ListGroupItems({ list }: { list: GroupEntity[] }) {
     return (

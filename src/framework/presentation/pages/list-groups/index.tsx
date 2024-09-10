@@ -2,7 +2,7 @@ import { useListGroups } from './hooks';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
 
-import ListGroupItems from './components/ListGroupItems';
+import ListGroupItems from './components/list-group-items';
 
 export default function ListGroups() {
     const { isLoading, list, title } = useListGroups();
