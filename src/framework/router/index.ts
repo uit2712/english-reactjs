@@ -1,9 +1,10 @@
+import React from 'react';
 import { ROUTES } from '@/core/constants/Routes';
 import ListGroups from '../presentation/pages/list-groups';
-import ListTopics from '../presentation/pages/list-topics';
-import TopicDetail from '../presentation/pages/topic-detail';
-import Test from '../presentation/pages/test';
-import CompletedTopic from '../presentation/pages/completed-topic';
+const CompletedTopic = React.lazy(() => import('../presentation/pages/completed-topic'));
+const Test = React.lazy(() => import('../presentation/pages/test'));
+const TopicDetail = React.lazy(() => import('../presentation/pages/topic-detail'));
+const ListTopics = React.lazy(() => import('../presentation/pages/list-topics'));
 
 const { completedTopic, home, test, topicDetail, topics } = ROUTES;
 
