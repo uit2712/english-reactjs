@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './framework/store';
 import { Provider } from 'react-redux';
 
+import 'primereact/resources/themes/lara-light-cyan/theme.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>

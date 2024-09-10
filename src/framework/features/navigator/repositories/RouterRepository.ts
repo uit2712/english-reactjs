@@ -30,7 +30,8 @@ export class RouterRepository implements RouterRepositoryInteface<NavigateFuncti
             return;
         }
 
-        this.router(topics.path, {
+        const path = topics.path.replace(':groupId', `${groupId}`);
+        this.router(path, {
             state: {
                 groupId,
             },
@@ -42,7 +43,8 @@ export class RouterRepository implements RouterRepositoryInteface<NavigateFuncti
             return;
         }
 
-        this.router(topicDetail.path, {
+        const path = topicDetail.path.replace(':id', `${topicId}`);
+        this.router(path, {
             state: {
                 id: topicId,
             },

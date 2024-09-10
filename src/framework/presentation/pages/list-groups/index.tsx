@@ -28,9 +28,10 @@ function List({ list }: { list: GroupEntity[] }) {
                 <div key={id}>
                     <Button
                         severity='info'
-                        title={name}
                         onClick={() => onSelectGroup(id)}
-                    ></Button>
+                    >
+                        {name}
+                    </Button>
                 </div>
             ))}
         </>
