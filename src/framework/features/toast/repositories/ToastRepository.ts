@@ -25,7 +25,7 @@ export class ToastRepository implements ToastRepositoryInteface {
         }
 
         toast.success(message, {
-            delay: lifespan,
+            autoClose: lifespan,
         });
     }
 
@@ -35,7 +35,7 @@ export class ToastRepository implements ToastRepositoryInteface {
         }
 
         toast.error(message, {
-            delay: lifespan,
+            autoClose: lifespan,
         });
     }
 }
