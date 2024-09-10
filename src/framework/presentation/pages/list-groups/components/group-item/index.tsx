@@ -1,8 +1,9 @@
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
 import { Button } from 'primereact/button';
+import React from 'react';
 
-export default function GroupItem({ item }: { item: GroupEntity }) {
+function GroupItemNotCache({ item }: { item: GroupEntity }) {
     const { id, name } = item;
 
     const onSelectGroup = (id: number) => {
@@ -20,3 +21,6 @@ export default function GroupItem({ item }: { item: GroupEntity }) {
         </div>
     );
 }
+
+const GroupItem = React.memo(GroupItemNotCache, (prevProps, nextProps) => prevProps.item.id === nextProps.item.id);
+export default GroupItem;
