@@ -1,10 +1,8 @@
-import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { useListGroups } from './hooks';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
 
-import { Button } from 'primereact/button';
-import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
+import ListGroupItems from './components/ListGroupItems';
 
 export default function ListGroups() {
     const { isLoading, list, title } = useListGroups();
@@ -12,28 +10,7 @@ export default function ListGroups() {
     return (
         <>
             <h1>{title}</h1>
-            {isLoading ? <ProgressSpinner /> : <List list={list} />}
-        </>
-    );
-}
-
-function List({ list }: { list: GroupEntity[] }) {
-    const onSelectGroup = (id: number) => {
-        PageListGroupsUI.selectGroup(id);
-    };
-
-    return (
-        <>
-            {list.map(({ id, name }) => (
-                <div key={id}>
-                    <Button
-                        severity='info'
-                        onClick={() => onSelectGroup(id)}
-                    >
-                        {name}
-                    </Button>
-                </div>
-            ))}
+            {isLoading ? <ProgressSpinner /> : <ListGroupItems list={list} />}
         </>
     );
 }
