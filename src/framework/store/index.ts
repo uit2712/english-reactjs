@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { groupReducer } from '../features/group/redux/slice';
 import { topicReducer } from '../features/topic/redux/slice';
+import { questionaireReducer } from '../features/questionaire/redux/slice';
 
 const reducer = combineReducers({
     group: groupReducer,
     topic: topicReducer,
+    questionaire: questionaireReducer,
 });
 
 export const store = configureStore({

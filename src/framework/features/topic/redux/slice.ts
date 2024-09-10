@@ -1,18 +1,11 @@
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
+import { initialTopicState } from '@/core/features/topic/store/TopicState';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-
-export interface TopicState {
-    list: TopicEntity[];
-}
-
-const initialState: TopicState = {
-    list: [],
-};
 
 export const topicSliceName = 'topic';
 export const topicSlice = createSlice({
     name: topicSliceName,
-    initialState,
+    initialState: initialTopicState,
     reducers: {
         setListTopics: (state, action: PayloadAction<TopicEntity[]>) => {
             state.list = action.payload;
