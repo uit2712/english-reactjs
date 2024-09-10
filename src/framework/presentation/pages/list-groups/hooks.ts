@@ -1,4 +1,3 @@
-import { Group } from '@/core/features/group/facades/Group';
 import { pageListGroupsConstant } from '@/core/features/page-list-groups/constants/PageListGroupsConstant';
 import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
 import { Toast } from '@/core/features/toast/facades/Toast';
@@ -18,7 +17,7 @@ export function useListGroups() {
 }
 
 function useLoadData() {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchData = async () => {
         const { success, message } = await PageListGroupsUI.getList();

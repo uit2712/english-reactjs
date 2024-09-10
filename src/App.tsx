@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import routes from './framework/router';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (
