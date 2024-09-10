@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import routes from './framework/router';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
+import 'primeicons/primeicons.css';
 
 function App() {
     return (

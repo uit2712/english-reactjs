@@ -44,7 +44,7 @@ function useLoadData(groupId: number) {
 
     React.useEffect(() => {
         fetchData();
-    }, [groupId]);
+    }, [fetchData]);
 
     return {
         isLoading,

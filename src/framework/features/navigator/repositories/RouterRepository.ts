@@ -42,8 +42,7 @@ export class RouterRepository implements RouterRepositoryInteface<NavigateFuncti
             return;
         }
 
-        const path = topicDetail.path.replace(':id', `${topicId}`);
-        this.router(path, {
+        this.router(topicDetail.alternativePath, {
             state: {
                 id: topicId,
             },
