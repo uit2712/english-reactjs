@@ -1,12 +1,16 @@
 import { RouteRepositoryInteface } from '@/core/features/navigator/interface-adapters/RouteRepositoryInteface';
 import { StringHelper } from '@/core/helpers/StringHelper';
-import { Location } from 'react-router-dom';
 
-export class RouteRepository implements RouteRepositoryInteface<Location> {
-    private route?: Location;
+export class RouteRepository implements RouteRepositoryInteface {
+    private data?: any;
+    private query?: any;
 
-    setRoute(route: Location<any>): void {
-        this.route = route;
+    setRouteData(data?: any): void {
+        this.data = data;
+    }
+
+    setRouteQueryData(data?: any): void {
+        this.query = data;
     }
 
     getPathParamAsString(name: string, defaultValue?: string): string {
@@ -18,20 +22,38 @@ export class RouteRepository implements RouteRepositoryInteface<Location> {
     }
 
     getQueryParamAsString(name: string, defaultValue: string = ''): string {
-        if (!this.route || StringHelper.isHasValue(name) === false) {
+        if (!this.query || StringHelper.isHasValue(name) === false) {
             return defaultValue;
         }
 
-        const value = this.route.state[name];
+        const value = this.query[name];
         return typeof value === 'string' ? value : defaultValue;
     }
 
     getQueryParamAsNumber(name: string, defaultValue: number = -1): number {
-        if (!this.route || StringHelper.isHasValue(name) === false) {
+        if (!this.query || StringHelper.isHasValue(name) === false) {
             return defaultValue;
         }
 
-        const value = this.route.state[name];
+        const value = this.query[name];
         return typeof value === 'string' ? Number.parseInt(value) : defaultValue;
+    }
+
+    getRouteDataAsString(name: string, defaultValue: string = ''): string {
+        if (!this.data) {
+            return defaultValue;
+        }
+
+        const value = this.data[name];
+        return value ? value : defaultValue;
+    }
+
+    getRouteDataAsNumber(name: string, defaultValue: number = 0): number {
+        if (!this.data) {
+            return defaultValue;
+        }
+
+        const value = this.data[name];
+        return value ? Number.parseInt(value) : defaultValue;
     }
 }

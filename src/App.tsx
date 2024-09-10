@@ -4,16 +4,18 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import routes from './framework/router';
 import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 
 function App() {
     return (
-        <>
+        <Container>
             <ToastContainer />
             <Router>
                 <RouterSetter />
                 <Routes>
                     {routes.map(({ path, Element }) => (
                         <Route
+                            key={path}
                             path={path}
                             element={
                                 <Suspense>
@@ -24,8 +26,14 @@ function App() {
                     ))}
                 </Routes>
             </Router>
-        </>
+        </Container>
     );
 }
+
+const Container = styled.main`
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1em;
+`;
 
 export default App;

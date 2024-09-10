@@ -30,8 +30,7 @@ export class RouterRepository implements RouterRepositoryInteface<NavigateFuncti
             return;
         }
 
-        const path = topics.path.replace(':groupId', `${groupId}`);
-        this.router(path, {
+        this.router(topics.alternativePath, {
             state: {
                 groupId,
             },
