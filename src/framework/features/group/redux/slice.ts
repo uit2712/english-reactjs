@@ -18,8 +18,12 @@ export const groupSlice = createSlice({
             state.list = action.payload;
         },
     },
+    selectors: {
+        getListGroups: (state) => state.list,
+    },
 });
 
 export const { setListGroups } = groupSlice.actions;
+export const { getListGroups } = groupSlice.selectors;
 
 export const groupReducer = groupSlice.reducer;

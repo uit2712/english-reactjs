@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RouterSetter } from './framework/presentation/components/RouterSetter';
+import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Suspense } from 'react';
+import routes from './framework/router';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <ToastContainer />
+            <Router>
+                <RouterSetter />
+                <Routes>
+                    {routes.map(({ path, Element }) => (
+                        <Route
+                            path={path}
+                            element={
+                                <Suspense>
+                                    <Element />
+                                </Suspense>
+                            }
+                        />
+                    ))}
+                </Routes>
+            </Router>
+        </>
+    );
 }
 
 export default App;

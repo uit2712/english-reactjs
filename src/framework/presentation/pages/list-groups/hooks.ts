@@ -1,0 +1,41 @@
+import { Group } from '@/core/features/group/facades/Group';
+import { pageListGroupsConstant } from '@/core/features/page-list-groups/constants/PageListGroupsConstant';
+import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
+import { Toast } from '@/core/features/toast/facades/Toast';
+import { useGetListGroups } from '@/framework/features/group/redux/selectors';
+import React, { useState } from 'react';
+
+export function useListGroups() {
+    const { title } = pageListGroupsConstant;
+
+    const { isLoading, list } = useLoadData();
+
+    return {
+        title,
+        isLoading,
+        list,
+    };
+}
+
+function useLoadData() {
+    const [isLoading, setIsLoading] = useState(false);
+
+    const fetchData = async () => {
+        const { success, message } = await PageListGroupsUI.getList();
+        setIsLoading(false);
+        if (false === success) {
+            Toast.showErrorMessage(message);
+        }
+    };
+
+    const list = useGetListGroups();
+
+    React.useEffect(() => {
+        fetchData();
+    }, []);
+
+    return {
+        isLoading,
+        list,
+    };
+}
