@@ -48,6 +48,7 @@ export default function Question({
                             <AnswerWrapper key={id}>
                                 <div className='flex items-center'>
                                     <RadioButton
+                                        inputId={elementId}
                                         checked={selectedId === id}
                                         value={id}
                                         disabled={disabled}
@@ -117,6 +118,7 @@ const AnswerWrapper = styled.div`
 
 const RadioButtonLabel = styled.label`
     margin-left: 0.5em;
+    cursor: pointer;
 `;
 
 const FullInfoContainer = styled.div<{ $show?: boolean }>`
