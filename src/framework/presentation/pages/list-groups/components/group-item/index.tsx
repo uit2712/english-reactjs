@@ -1,5 +1,5 @@
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
-import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
+import { PageListGroupsUI } from '@/core/pages/list-groups/facades/PageListGroupsUI';
 import { Button } from 'primereact/button';
 import React from 'react';
 

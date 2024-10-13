@@ -1,5 +1,5 @@
-import { pageListGroupsConstant } from '@/core/features/page-list-groups/constants/PageListGroupsConstant';
-import { PageListGroupsUI } from '@/core/features/page-list-groups/facades/PageListGroupsUI';
+import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
+import { PageListGroupsUI } from '@/core/pages/list-groups/facades/PageListGroupsUI';
 import { Toast } from '@/core/features/toast/facades/Toast';
 import { useGetListGroups } from '@/framework/features/group/redux/selectors';
 import React, { useState } from 'react';

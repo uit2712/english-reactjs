@@ -1,4 +1,4 @@
-import { pageCompletedTopicConstant } from '@/core/features/page-completed-topic/constants/PageCompletedTopicConstant';
+import { pageCompletedTopicConstant } from '@/core/pages/completed-topic/constants/PageCompletedTopicConstant';
 import { useCompletedTopic } from './hooks';
 import { Button } from 'primereact/button';
 import styled from 'styled-components';
