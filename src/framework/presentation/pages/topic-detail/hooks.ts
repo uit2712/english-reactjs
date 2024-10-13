@@ -1,11 +1,15 @@
+import React from 'react';
+
 import { Navigator } from '@/core/features/navigator/facades/Navigator';
-import { PageTopicDetailUI } from '@/core/features/page-topic-detail/facades/PageTopicDetailUI';
 import { Questionaire } from '@/core/features/questionaire/facades/Questionaire';
 import { Toast } from '@/core/features/toast/facades/Toast';
 import { NumberHelper } from '@/core/helpers/NumberHelper';
-import React from 'react';
+import { PageTopicDetailUI } from '@/core/pages/topic-detail/facades/PageTopicDetailUI';
+import {
+    useGetListVocabularies, useGetTotalVocabulariesTitle
+} from '@/framework/features/questionaire/redux/selectors';
+
 import useGetRouteDataAsNumber from '../../hooks/useGetRouteDataAsNumber';
-import { useGetListVocabularies, useGetTotalVocabulariesTitle } from '@/framework/features/questionaire/redux/selectors';
 
 export function useTopicDetail() {
     const { id } = useGetDataFromRoute();
