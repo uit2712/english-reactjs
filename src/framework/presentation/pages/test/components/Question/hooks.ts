@@ -1,9 +1,11 @@
-import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
-import { TextToSpeech } from '@/core/features/text-to-speech/facades/TextToSpeech';
-import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
-import { Questionaire } from '@/core/features/questionaire/facades/Questionaire';
-import { pageTestConstant } from '@/core/features/page-test/constants/PageTestConstant';
 import React, { useContext } from 'react';
+
+import { Questionaire } from '@/core/features/questionaire/facades/Questionaire';
+import { TextToSpeech } from '@/core/features/text-to-speech/facades/TextToSpeech';
+import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
+import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
+import { pageTestConstant } from '@/core/pages/test/constants/PageTestConstant';
+
 import { TestContext } from '../../contexts';
 
 export function useQuestion({ rightAnswer, listAnswers }: { rightAnswer?: VocabularyEntity; listAnswers: AnswerViewModel[] }) {

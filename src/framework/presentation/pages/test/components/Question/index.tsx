@@ -1,14 +1,14 @@
+import { Button } from 'primereact/button';
+import { ProgressBar } from 'primereact/progressbar';
+import { RadioButton } from 'primereact/radiobutton';
+import styled from 'styled-components';
+
 import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
-import { useQuestion } from './hooks';
-
-import { ProgressBar } from 'primereact/progressbar';
-
-import { RadioButton } from 'primereact/radiobutton';
-import { Button } from 'primereact/button';
-import styled from 'styled-components';
-import { pageTestConstant } from '@/core/features/page-test/constants/PageTestConstant';
+import { pageTestConstant } from '@/core/pages/test/constants/PageTestConstant';
 import { PreventedSubmitForm } from '@/framework/presentation/components/PreventedSubmitForm';
+
+import { useQuestion } from './hooks';
 
 const { buttonNextText, buttonConfirmText } = pageTestConstant;
 
