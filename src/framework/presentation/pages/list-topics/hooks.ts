@@ -1,4 +1,4 @@
-import { PageListTopicsUI } from '@/core/features/page-list-topics/facades/PageListTopicsUI';
+import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
 import { Toast } from '@/core/features/toast/facades/Toast';
 import { NumberHelper } from '@/core/helpers/NumberHelper';
 import { useGetListTopics } from '@/framework/features/topic/redux/selectors';

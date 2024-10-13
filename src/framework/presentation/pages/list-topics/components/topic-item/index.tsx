@@ -1,4 +1,4 @@
-import { PageListTopicsUI } from '@/core/features/page-list-topics/facades/PageListTopicsUI';
+import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
 import { Button } from 'primereact/button';
 import React from 'react';
