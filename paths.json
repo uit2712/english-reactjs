@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src",
+        "baseUrl": ".",
         "paths": {
             "@/core/*": [
-                "core/*"
+                "src/core/*"
             ],
             "@/framework/*": [
-                "framework/*"
+                "src/framework/*"
             ]
         }
     }
