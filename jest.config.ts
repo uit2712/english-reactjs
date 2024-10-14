@@ -1,10 +1,12 @@
 import type { Config } from 'jest';
+import { resolve } from 'path';
 
 const config: Config = {
     verbose: true,
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
     moduleNameMapper: {
-        '@/(.*)': '<rootDir>/src/$1',
+        '^@/core/(.*)$': resolve(__dirname, './src/core/$1'),
+        '^@/framework/(.*)$': resolve(__dirname, './src/framework/$1'),
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
     moduleDirectories: ['node_modules', '<rootDir>/'],
