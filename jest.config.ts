@@ -1,10 +1,13 @@
 import type { Config } from 'jest';
 
+const { pathsToModuleNameMapper } = require('ts-jest');
+const { compilerOptions } = require('./paths.json');
+
 const config: Config = {
     verbose: true,
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
+        ...pathsToModuleNameMapper(compilerOptions.paths),
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
     moduleDirectories: ['node_modules', '<rootDir>/'],
