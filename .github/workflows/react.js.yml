@@ -19,7 +19,11 @@ jobs:
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                token: ${{ secrets.CI_TOKEN }}
+                submodules: true
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v4
               with:
@@ -29,7 +33,5 @@ jobs:
               run: php -r "file_exists('.env') || copy('.env.example', '.env');"
             - name: Copy craco.config.js
               run: php -r "file_exists('craco.config.js') || copy('craco.config.example.js', 'craco.config.js');"
-            - name: Add submodule
-              run: git submodule add https://github.com/uit2712/english-core-ts src/core
             - run: yarn
             - run: yarn test
