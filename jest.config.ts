@@ -4,7 +4,7 @@ const config: Config = {
     verbose: true,
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
+        '@/(.*)': '<rootDir>/src/$1',
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
     moduleDirectories: ['node_modules', '<rootDir>/'],
