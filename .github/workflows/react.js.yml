@@ -22,8 +22,10 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
               with:
-                token: ${{ secrets.MY_REPO_PAT }}
-                submodules: recursive
+                token: '${{ secrets.MY_REPO_PAT }}'
+                repository: uit2712/english-core-ts
+                path: src/core
+                ref: 'master'
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v4
               with:
