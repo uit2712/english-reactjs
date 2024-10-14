@@ -1,7 +1,8 @@
-import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
-import { PageListGroupsUI } from '@/core/pages/list-groups/facades/PageListGroupsUI';
 import { Button } from 'primereact/button';
 import React from 'react';
+
+import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
+import { PageListGroupsUI } from '@/core/pages/list-groups/facades/PageListGroupsUI';
 
 function GroupItemNotCache({ item }: { item: GroupEntity }) {
     const { id, name } = item;
@@ -15,6 +16,7 @@ function GroupItemNotCache({ item }: { item: GroupEntity }) {
             <Button
                 severity='info'
                 onClick={() => onSelectGroup(id)}
+                data-testid={`button-group-${id}`}
             >
                 {name}
             </Button>
