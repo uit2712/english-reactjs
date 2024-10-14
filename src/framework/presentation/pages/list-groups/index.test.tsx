@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { store } from '@/framework/store';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import ListGroups from './';
 import * as hooks from './hooks';
