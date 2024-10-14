@@ -9,6 +9,7 @@ const config: Config = {
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
     moduleDirectories: ['node_modules', '<rootDir>/'],
+    modulePaths: ['<rootDir>'],
     transform: {
         '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
     },
