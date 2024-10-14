@@ -4,31 +4,29 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    push:
+        branches: ['master']
+    pull_request:
+        branches: ['master']
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [20.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Copy craco.config.js
-      run: php -r "file_exists('craco.config.js') || copy('craco.config.example.js', 'craco.config.js');"
-    - run: yarn
-    - run: yarn test
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Copy .env
+              run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+            - name: Copy craco.config.js
+              run: php -r "file_exists('craco.config.js') || copy('craco.config.example.js', 'craco.config.js');"
+            - run: yarn
+            - run: yarn test
