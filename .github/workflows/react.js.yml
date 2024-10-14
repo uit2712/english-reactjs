@@ -22,7 +22,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
               with:
-                token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
+                token: ${{ secrets.GITHUB_REPO_TOKEN }}
                 submodules: recursive
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v4
