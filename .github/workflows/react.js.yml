@@ -29,5 +29,7 @@ jobs:
               run: php -r "file_exists('.env') || copy('.env.example', '.env');"
             - name: Copy craco.config.js
               run: php -r "file_exists('craco.config.js') || copy('craco.config.example.js', 'craco.config.js');"
+            - name: Add submodule
+              run: git submodule add https://github.com/uit2712/english-core-ts src/core
             - run: yarn
             - run: yarn test
