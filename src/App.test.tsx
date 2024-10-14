@@ -1,9 +1,17 @@
-import React from 'react';
+import '@testing-library/jest-dom';
+
 import { render, screen } from '@testing-library/react';
+
 import App from './App';
+import { ReduxProvider } from './framework/presentation/components/ReduxProvider';
+import { store } from './framework/store';
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    render(
+        <ReduxProvider reduxStore={store}>
+            <App />
+        </ReduxProvider>,
+    );
+    const linkElement = screen.getByText(/Nhóm từ vựng/i);
+    expect(linkElement).toBeInTheDocument();
 });
