@@ -1,6 +1,5 @@
 import { Provider } from 'react-redux';
 
-import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { store } from '@/framework/store';
 import { render, screen } from '@testing-library/react';
 
@@ -20,15 +19,14 @@ describe('Page list groups', () => {
     });
 
     it('render single button', async () => {
-        let list: GroupEntity[] = [
-            {
-                id: 1,
-                name: 'Tiếng Anh',
-            },
-        ];
         const mockGetList = jest.spyOn(hooks, 'useListGroups');
         mockGetList.mockReturnValue({
-            list,
+            list: [
+                {
+                    id: 1,
+                    name: 'Tiếng Anh',
+                },
+            ],
             title: '123',
             isLoading: false,
         });
