@@ -87,4 +87,37 @@ describe('Page list groups', () => {
             expect(firstButtonElement).toBeInTheDocument();
         });
     });
+
+    it('render two buttons', async () => {
+        const list = [
+            {
+                id: 1,
+                name: 'Tiếng Anh',
+            },
+            {
+                id: 2,
+                name: 'Tiếng Việt',
+            },
+        ];
+
+        const mockGetList = jest.spyOn(hooks, 'useListGroups');
+        mockGetList.mockReturnValue({
+            list,
+            title,
+            isLoading: false,
+        });
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+            </Provider>,
+        );
+
+        for (const item of list) {
+            await waitFor(async () => {
+                const buttonElement = await screen.findByTestId(`button-group-${item.id}`);
+                expect(buttonElement).toBeInTheDocument();
+            });
+        }
+    });
 });
