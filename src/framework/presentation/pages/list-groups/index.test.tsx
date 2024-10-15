@@ -21,6 +21,24 @@ describe('Page list groups', () => {
         expect(titleElement).toBeInTheDocument();
     });
 
+    it('render loading spinner', async () => {
+        const mockGetList = jest.spyOn(hooks, 'useListGroups');
+        mockGetList.mockReturnValue({
+            list: [],
+            title,
+            isLoading: true,
+        });
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+            </Provider>,
+        );
+
+        const loadingElement = await screen.findByTestId('loading');
+        expect(loadingElement).toBeInTheDocument();
+    });
+
     it('render no group(s)', async () => {
         const mockGetList = jest.spyOn(hooks, 'useListGroups');
         mockGetList.mockReturnValue({

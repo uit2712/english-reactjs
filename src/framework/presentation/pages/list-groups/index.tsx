@@ -9,7 +9,7 @@ export default function ListGroups() {
     return (
         <>
             <h1 data-testid='page-list-groups-title'>{title}</h1>
-            {isLoading ? <ProgressSpinner data-test-id='loading' /> : <ListGroupItems list={list} />}
+            {isLoading ? <ProgressSpinner data-testid='loading' /> : <ListGroupItems list={list} />}
         </>
     );
 }
