@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 
 import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
 import { store } from '@/framework/store';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import ListGroups from './';
 import * as hooks from './hooks';
@@ -10,15 +10,17 @@ import * as hooks from './hooks';
 describe('Page list groups', () => {
     const { title } = pageListGroupsConstant;
 
-    it('render title', () => {
+    it('render title', async () => {
         render(
             <Provider store={store}>
                 <ListGroups />
             </Provider>,
         );
 
-        const titleElement = screen.getByTestId('page-list-groups-title');
-        expect(titleElement).toBeInTheDocument();
+        await waitFor(async () => {
+            const titleElement = screen.getByTestId('page-list-groups-title');
+            expect(titleElement).toBeInTheDocument();
+        });
     });
 
     it('render loading spinner', async () => {
@@ -35,8 +37,10 @@ describe('Page list groups', () => {
             </Provider>,
         );
 
-        const loadingElement = await screen.findByTestId('loading');
-        expect(loadingElement).toBeInTheDocument();
+        await waitFor(async () => {
+            const loadingElement = await screen.findByTestId('loading');
+            expect(loadingElement).toBeInTheDocument();
+        });
     });
 
     it('render no group(s)', async () => {
@@ -53,8 +57,10 @@ describe('Page list groups', () => {
             </Provider>,
         );
 
-        const noGroupsElement = await screen.findByTestId('no-groups-text');
-        expect(noGroupsElement).toBeInTheDocument();
+        await waitFor(async () => {
+            const noGroupsElement = await screen.findByTestId('no-groups-text');
+            expect(noGroupsElement).toBeInTheDocument();
+        });
     });
 
     it('render single button', async () => {
@@ -76,7 +82,9 @@ describe('Page list groups', () => {
             </Provider>,
         );
 
-        const firstButtonElement = await screen.findByTestId('button-group-1');
-        expect(firstButtonElement).toBeInTheDocument();
+        await waitFor(async () => {
+            const firstButtonElement = await screen.findByTestId('button-group-1');
+            expect(firstButtonElement).toBeInTheDocument();
+        });
     });
 });
