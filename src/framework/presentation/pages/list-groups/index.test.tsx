@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 
+import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
 import { store } from '@/framework/store';
 import { render, screen } from '@testing-library/react';
 
@@ -7,6 +8,8 @@ import ListGroups from './';
 import * as hooks from './hooks';
 
 describe('Page list groups', () => {
+    const { title } = pageListGroupsConstant;
+
     it('render title', () => {
         render(
             <Provider store={store}>
@@ -18,6 +21,24 @@ describe('Page list groups', () => {
         expect(titleElement).toBeInTheDocument();
     });
 
+    it('render no group(s)', async () => {
+        const mockGetList = jest.spyOn(hooks, 'useListGroups');
+        mockGetList.mockReturnValue({
+            list: [],
+            title,
+            isLoading: false,
+        });
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+            </Provider>,
+        );
+
+        const noGroupsElement = await screen.findByTestId('no-groups-text');
+        expect(noGroupsElement).toBeInTheDocument();
+    });
+
     it('render single button', async () => {
         const mockGetList = jest.spyOn(hooks, 'useListGroups');
         mockGetList.mockReturnValue({
@@ -27,7 +48,7 @@ describe('Page list groups', () => {
                     name: 'Tiếng Anh',
                 },
             ],
-            title: '123',
+            title,
             isLoading: false,
         });
 
