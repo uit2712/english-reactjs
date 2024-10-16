@@ -1,13 +1,16 @@
+import React, { useState } from 'react';
+
+import { GetListGroupsResult } from '@/core/features/group/models/GetListGroupsResult';
+import { Toast } from '@/core/features/toast/facades/Toast';
 import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
 import { PageListGroupsUI } from '@/core/pages/list-groups/facades/PageListGroupsUI';
-import { Toast } from '@/core/features/toast/facades/Toast';
 import { useGetListGroups } from '@/framework/features/group/redux/selectors';
-import React, { useState } from 'react';
 
 export function useListGroups() {
     const { title } = pageListGroupsConstant;
 
-    const { isLoading, list } = useLoadData();
+    const { isLoading, list, apiResponse } = useLoadData();
+    useShowMessage(apiResponse);
 
     return {
         title,
@@ -16,15 +19,14 @@ export function useListGroups() {
     };
 }
 
-function useLoadData() {
+export function useLoadData() {
     const [isLoading, setIsLoading] = useState(true);
+    const [apiResponse, setApiResponse] = useState<GetListGroupsResult | null>(null);
 
     const fetchData = async () => {
-        const { success, message } = await PageListGroupsUI.getList();
+        const result = await PageListGroupsUI.getList();
         setIsLoading(false);
-        if (false === success) {
-            Toast.showErrorMessage(message);
-        }
+        setApiResponse(result);
     };
 
     const list = useGetListGroups();
@@ -36,5 +38,19 @@ function useLoadData() {
     return {
         isLoading,
         list,
+        apiResponse,
     };
+}
+
+export function useShowMessage(apiResponse: GetListGroupsResult | null) {
+    React.useEffect(() => {
+        if (apiResponse === null) {
+            return;
+        }
+
+        if (false === apiResponse.success) {
+            Toast.showErrorMessage(apiResponse.message);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [apiResponse?.success]);
 }

@@ -1,6 +1,9 @@
+import axios from 'axios';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
+import { BASE_API_URL } from '@/framework/constants/Api';
 import { store } from '@/framework/store';
 import { render, screen, waitFor } from '@testing-library/react';
 
@@ -21,6 +24,17 @@ describe('Page list groups', () => {
             const titleElement = screen.getByTestId('page-list-groups-title');
             expect(titleElement).toBeInTheDocument();
         });
+    });
+
+    it('call api get list groups', async () => {
+        render(
+            <Provider store={store}>
+                <ListGroups />
+                <ToastContainer />
+            </Provider>,
+        );
+
+        expect(axios.get).toHaveBeenCalledWith(BASE_API_URL + '/groups', { params: { page: 0, perPage: 10 } });
     });
 
     it('render loading spinner', async () => {
