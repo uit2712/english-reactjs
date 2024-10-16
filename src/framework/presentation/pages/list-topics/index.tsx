@@ -1,6 +1,7 @@
 import { ProgressSpinner } from 'primereact/progressspinner';
-import { useListTopics } from './hooks';
+
 import ListTopicItems from './components/list-topic-items';
+import { useListTopics } from './hooks';
 
 export default function ListTopics() {
     const { isLoading, list, title } = useListTopics();

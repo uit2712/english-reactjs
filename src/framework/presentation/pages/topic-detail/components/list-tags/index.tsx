@@ -1,6 +1,7 @@
-import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 import { Tag } from 'primereact/tag';
 import { styled } from 'styled-components';
+
+import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 
 export default function ListTags({ list }: { list: VocabularyEntity[] }) {
     return (

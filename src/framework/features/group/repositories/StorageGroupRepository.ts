@@ -1,9 +1,12 @@
-import { store } from '@/framework/store';
-import { ArrayHelper } from '@/core/helpers/ArrayHelper';
-import { StorageGroupRepositoryInterface } from '@/core/features/group/interface-adapters/StorageGroupRepositoryInterface';
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
-import { GetListGroupsResult } from '@/core/features/group/models/GetListGroupsResult';
+import {
+    StorageGroupRepositoryInterface
+} from '@/core/features/group/interface-adapters/StorageGroupRepositoryInterface';
 import { GetGroupResult } from '@/core/features/group/models/GetGroupResult';
+import { GetListGroupsResult } from '@/core/features/group/models/GetListGroupsResult';
+import { ArrayHelper } from '@/core/helpers/ArrayHelper';
+import { store } from '@/framework/store';
+
 import { setListGroups } from '../redux/slice';
 
 export class StorageGroupRepository implements StorageGroupRepositoryInterface {

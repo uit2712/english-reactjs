@@ -1,9 +1,12 @@
-import { store } from '@/framework/store';
-import { ArrayHelper } from '@/core/helpers/ArrayHelper';
-import { StorageTopicRepositoryInterface } from '@/core/features/topic/interface-adapters/StorageTopicRepositoryInterface';
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
+import {
+    StorageTopicRepositoryInterface
+} from '@/core/features/topic/interface-adapters/StorageTopicRepositoryInterface';
 import { GetListTopicsResult } from '@/core/features/topic/models/GetListTopicsResult';
 import { GetTopicResult } from '@/core/features/topic/models/GetTopicResult';
+import { ArrayHelper } from '@/core/helpers/ArrayHelper';
+import { store } from '@/framework/store';
+
 import { setListTopics } from '../redux/slice';
 
 export class StorageTopicRepository implements StorageTopicRepositoryInterface {

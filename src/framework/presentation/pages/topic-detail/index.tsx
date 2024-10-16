@@ -1,9 +1,9 @@
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { useTopicDetail } from './hooks';
-
 import { Button } from 'primereact/button';
+import { ProgressSpinner } from 'primereact/progressspinner';
 import styled from 'styled-components';
+
 import ListTags from './components/list-tags';
+import { useTopicDetail } from './hooks';
 
 export default function TopicDetail() {
     const { onClickStartLearning, isLoading, list, title, totalVocabulariesTitle } = useTopicDetail();

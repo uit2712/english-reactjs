@@ -1,6 +1,7 @@
-import { Navigator } from '@/core/features/navigator/facades/Navigator';
 import React from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+
+import { Navigator } from '@/core/features/navigator/facades/Navigator';
 
 export function RouterSetter() {
     const navigate = useNavigate();

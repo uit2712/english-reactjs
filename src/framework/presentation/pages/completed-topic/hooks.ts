@@ -1,7 +1,11 @@
-import { Navigator } from '@/core/features/navigator/facades/Navigator';
-import useGetRouteDataAsString from '../../hooks/useGetRouteDataAsString';
-import { useGetSelectedGroupId, useGetSelectedTopicId } from '@/framework/features/questionaire/redux/selectors';
 import React from 'react';
+
+import { Navigator } from '@/core/features/navigator/facades/Navigator';
+import {
+    useGetSelectedGroupId, useGetSelectedTopicId
+} from '@/framework/features/questionaire/redux/selectors';
+
+import useGetRouteDataAsString from '../../hooks/useGetRouteDataAsString';
 
 export function useCompletedTopic() {
     const { selectOtherTopicsSameGroup } = useSelectOtherTopicsSameGroup();

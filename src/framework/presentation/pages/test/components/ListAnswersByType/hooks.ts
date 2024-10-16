@@ -1,10 +1,10 @@
-import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
+import React from 'react';
 
-import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
+import { QuestionaireEntity } from '@/core/features/questionaire/entities/QuestionaireEntity';
+import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 import { Vocabulary } from '@/core/features/vocabulary/facades/Vocabulary';
 import { QuestionaireType } from '@/core/features/vocabulary/types/QuestionaireType';
-import { QuestionaireEntity } from '@/core/features/questionaire/entities/QuestionaireEntity';
-import React from 'react';
+import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
 
 export function useListAnswersByType(type: QuestionaireType, currentQuestion?: QuestionaireEntity<VocabularyEntity> | undefined) {
     const listAnswers = React.useMemo(

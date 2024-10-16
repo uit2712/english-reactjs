@@ -1,6 +1,6 @@
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { initialGroupState } from '@/core/features/group/store/GroupState';
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, type } from '@reduxjs/toolkit';
 
 export const groupSliceName = 'group';
 export const groupSlice = createSlice({

@@ -1,13 +1,18 @@
-import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
-import { NumberHelper } from '@/core/helpers/NumberHelper';
-import { VocabularyQuestionaireRepository } from '@/core/features/questionaire/repositories/VocabularyQuestionaireRepository';
-import { QuestionaireType } from '@/core/features/vocabulary/types/QuestionaireType';
+import React from 'react';
+
 import { Navigator } from '@/core/features/navigator/facades/Navigator';
 import { QuestionaireEntity } from '@/core/features/questionaire/entities/QuestionaireEntity';
-import { QuestionaireRepositoryInterface } from '@/core/features/questionaire/interface-adapters/QuestionaireRepositoryInterface';
-import React from 'react';
-import { useGetListVocabularies } from '@/framework/features/questionaire/redux/selectors';
+import {
+    QuestionaireRepositoryInterface
+} from '@/core/features/questionaire/interface-adapters/QuestionaireRepositoryInterface';
+import {
+    VocabularyQuestionaireRepository
+} from '@/core/features/questionaire/repositories/VocabularyQuestionaireRepository';
 import { Toast } from '@/core/features/toast/facades/Toast';
+import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
+import { QuestionaireType } from '@/core/features/vocabulary/types/QuestionaireType';
+import { NumberHelper } from '@/core/helpers/NumberHelper';
+import { useGetListVocabularies } from '@/framework/features/questionaire/redux/selectors';
 
 export function useTest() {
     const state = React.useState<{

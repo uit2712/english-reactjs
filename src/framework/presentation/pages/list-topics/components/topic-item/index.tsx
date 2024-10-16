@@ -1,8 +1,9 @@
-import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
-import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
 import { Button } from 'primereact/button';
 import React from 'react';
 import { styled } from 'styled-components';
+
+import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
+import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
 
 function TopicItemNotCache({ item }: { item: TopicEntity }) {
     const { id, name } = item;

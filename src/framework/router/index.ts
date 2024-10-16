@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { ROUTES } from '@/core/constants/Routes';
+
 import ListGroups from '../presentation/pages/list-groups';
+
 const CompletedTopic = React.lazy(() => import('../presentation/pages/completed-topic'));
 const Test = React.lazy(() => import('../presentation/pages/test'));
 const TopicDetail = React.lazy(() => import('../presentation/pages/topic-detail'));

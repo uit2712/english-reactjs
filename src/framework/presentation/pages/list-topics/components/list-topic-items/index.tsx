@@ -1,4 +1,5 @@
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
+
 import TopicItem from '../topic-item';
 
 export default function ListTopicItems({ list }: { list: TopicEntity[] }) {

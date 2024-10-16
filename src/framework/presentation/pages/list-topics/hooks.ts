@@ -1,8 +1,10 @@
-import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
+import React, { useState } from 'react';
+
 import { Toast } from '@/core/features/toast/facades/Toast';
 import { NumberHelper } from '@/core/helpers/NumberHelper';
+import { PageListTopicsUI } from '@/core/pages/list-topics/facades/PageListTopicsUI';
 import { useGetListTopics } from '@/framework/features/topic/redux/selectors';
-import React, { useState } from 'react';
+
 import useGetRouteDataAsNumber from '../../hooks/useGetRouteDataAsNumber';
 
 export function useListTopics() {

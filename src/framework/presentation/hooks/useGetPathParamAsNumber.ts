@@ -1,6 +1,7 @@
-import { StringHelper } from '@/core/helpers/StringHelper';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
+import { StringHelper } from '@/core/helpers/StringHelper';
 
 export default function useGetPathParamAsNumber(name: string, defaultValue: number = 0) {
     const params = useParams();

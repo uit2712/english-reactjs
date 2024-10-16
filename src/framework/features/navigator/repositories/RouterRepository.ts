@@ -1,8 +1,11 @@
-import { StringHelper } from '@/core/helpers/StringHelper';
-import { NumberHelper } from '@/core/helpers/NumberHelper';
-import { ROUTES } from '@/core/constants/Routes';
-import { RouterRepositoryInteface } from '@/core/features/navigator/interface-adapters/RouterRepositoryInteface';
 import { NavigateFunction } from 'react-router-dom';
+
+import { ROUTES } from '@/core/constants/Routes';
+import {
+    RouterRepositoryInteface
+} from '@/core/features/navigator/interface-adapters/RouterRepositoryInteface';
+import { NumberHelper } from '@/core/helpers/NumberHelper';
+import { StringHelper } from '@/core/helpers/StringHelper';
 
 const { completedTopic, test, topicDetail, topics } = ROUTES;
 

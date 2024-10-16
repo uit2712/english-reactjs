@@ -1,8 +1,9 @@
 import { QuestionaireEntity } from '@/core/features/questionaire/entities/QuestionaireEntity';
 import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 import { QuestionaireType } from '@/core/features/vocabulary/types/QuestionaireType';
-import { useListAnswersByType } from './hooks';
+
 import Question from '../Question';
+import { useListAnswersByType } from './hooks';
 
 export default function ListAnswersByType({
     currentQuestion,

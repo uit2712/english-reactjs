@@ -1,6 +1,9 @@
-import { StringHelper } from '@/core/helpers/StringHelper';
-import { ToastRepositoryInteface } from '@/core/features/toast/interface-adapters/ToastRepositoryInteface';
 import { toast } from 'react-toastify';
+
+import {
+    ToastRepositoryInteface
+} from '@/core/features/toast/interface-adapters/ToastRepositoryInteface';
+import { StringHelper } from '@/core/helpers/StringHelper';
 
 export class ToastRepository implements ToastRepositoryInteface {
     showSuccessMessage(message: string): void {

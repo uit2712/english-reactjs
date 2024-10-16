@@ -2,7 +2,7 @@ import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
 import { initialQuestionaireState } from '@/core/features/questionaire/store/QuestionaireState';
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
 import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, type } from '@reduxjs/toolkit';
 
 export const questionaireSliceName = 'questionaire';
 export const questionaireSlice = createSlice({

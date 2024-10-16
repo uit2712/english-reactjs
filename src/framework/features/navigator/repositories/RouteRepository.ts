@@ -1,4 +1,6 @@
-import { RouteRepositoryInteface } from '@/core/features/navigator/interface-adapters/RouteRepositoryInteface';
+import {
+    RouteRepositoryInteface
+} from '@/core/features/navigator/interface-adapters/RouteRepositoryInteface';
 import { StringHelper } from '@/core/helpers/StringHelper';
 
 export class RouteRepository implements RouteRepositoryInteface {

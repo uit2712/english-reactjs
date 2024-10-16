@@ -1,6 +1,6 @@
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
 import { initialTopicState } from '@/core/features/topic/store/TopicState';
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, type } from '@reduxjs/toolkit';
 
 export const topicSliceName = 'topic';
 export const topicSlice = createSlice({

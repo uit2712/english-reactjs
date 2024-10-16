@@ -1,9 +1,12 @@
-import { store } from '@/framework/store';
-import { VocabularyEntity } from '../../../../core/features/vocabulary/entities/VocabularyEntity';
-import { ArrayHelper } from '@/core/helpers/ArrayHelper';
 import { GroupEntity } from '@/core/features/group/entities/GroupEntity';
-import { StorageQuestionaireRepositoryInterface } from '@/core/features/questionaire/interface-adapters/StorageQuestionaireRepositoryInterface';
+import {
+    StorageQuestionaireRepositoryInterface
+} from '@/core/features/questionaire/interface-adapters/StorageQuestionaireRepositoryInterface';
 import { TopicEntity } from '@/core/features/topic/entities/TopicEntity';
+import { ArrayHelper } from '@/core/helpers/ArrayHelper';
+import { store } from '@/framework/store';
+
+import { VocabularyEntity } from '../../../../core/features/vocabulary/entities/VocabularyEntity';
 import { setListSelectedVocabularies, setSelectedGroup, setSelectedTopic } from '../redux/slice';
 
 export class StorageVocabularyQuestionaireRepository implements StorageQuestionaireRepositoryInterface<VocabularyEntity> {

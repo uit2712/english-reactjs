@@ -1,6 +1,7 @@
-import { StringHelper } from '@/core/helpers/StringHelper';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { StringHelper } from '@/core/helpers/StringHelper';
 
 export default function useGetRouteDataAsString(name: string, defaultValue: string = '') {
     const { state } = useLocation();

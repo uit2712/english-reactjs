@@ -1,7 +1,9 @@
-import { useSelector } from 'react-redux';
-import { getSelectedGroupId, getListSelectedVocabularies, getSelectedTopicId } from './slice';
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { Questionaire } from '@/core/features/questionaire/facades/Questionaire';
+
+import { getListSelectedVocabularies, getSelectedGroupId, getSelectedTopicId } from './slice';
 
 export function useGetListVocabularies() {
     return useSelector(getListSelectedVocabularies);

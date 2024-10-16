@@ -1,11 +1,13 @@
-import { RouterSetter } from './framework/presentation/components/RouterSetter';
-import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Suspense } from 'react';
-import routes from './framework/router';
 import 'react-toastify/dist/ReactToastify.css';
-import styled from 'styled-components';
 import 'primeicons/primeicons.css';
+
+import { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import styled from 'styled-components';
+
+import { RouterSetter } from './framework/presentation/components/RouterSetter';
+import routes from './framework/router';
 
 function App() {
     return (

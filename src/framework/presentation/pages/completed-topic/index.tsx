@@ -1,7 +1,11 @@
-import { pageCompletedTopicConstant } from '@/core/pages/completed-topic/constants/PageCompletedTopicConstant';
-import { useCompletedTopic } from './hooks';
 import { Button } from 'primereact/button';
 import styled from 'styled-components';
+
+import {
+    pageCompletedTopicConstant
+} from '@/core/pages/completed-topic/constants/PageCompletedTopicConstant';
+
+import { useCompletedTopic } from './hooks';
 
 export default function CompletedTopic() {
     const { title, subtitle, buttonLearnAgainTitle, buttonSelectOtherTopicsSameGroupTitle } = pageCompletedTopicConstant;
