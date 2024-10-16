@@ -1,14 +1,14 @@
 import axios, { HttpStatusCode } from 'axios';
 import { Provider } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 import { GetListGroupsResult } from '@/core/features/group/models/GetListGroupsResult';
-import { Toast } from '@/core/features/toast/facades/Toast';
 import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
 import { BASE_API_URL } from '@/framework/constants/Api';
 import { store } from '@/framework/store';
 import { render, renderHook, screen, waitFor } from '@testing-library/react';
 
+import { emptyPromiseFunction } from '../../functions';
 import ListGroups from './';
 import * as hooks from './hooks';
 
@@ -45,6 +45,8 @@ describe('Page list groups', () => {
             list: [],
             title,
             isLoading: true,
+            isShowButtonRetry: false,
+            onClickRetry: emptyPromiseFunction,
         });
 
         render(
@@ -79,12 +81,55 @@ describe('Page list groups', () => {
         });
     });
 
+    it('show button retry', async () => {
+        const mockUseListGroups = jest.spyOn(hooks, 'useListGroups');
+        mockUseListGroups.mockReturnValue({
+            isLoading: false,
+            list: [],
+            title: '',
+            isShowButtonRetry: true,
+            onClickRetry: emptyPromiseFunction,
+        });
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+            </Provider>,
+        );
+
+        await waitFor(async () => {
+            const buttonRetryElement = await screen.findByTestId('button-retry');
+            expect(buttonRetryElement).toBeInTheDocument();
+        });
+    });
+
+    it('hide button retry', async () => {
+        const mockUseListGroups = jest.spyOn(hooks, 'useListGroups');
+        mockUseListGroups.mockReturnValue({
+            isLoading: false,
+            list: [],
+            title: '',
+            isShowButtonRetry: false,
+            onClickRetry: emptyPromiseFunction,
+        });
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+            </Provider>,
+        );
+
+        expect(screen.queryByTestId('button-retry')).toBeFalsy();
+    });
+
     it('render no group(s)', async () => {
         const mockGetList = jest.spyOn(hooks, 'useListGroups');
         mockGetList.mockReturnValue({
             list: [],
             title,
             isLoading: false,
+            isShowButtonRetry: false,
+            onClickRetry: emptyPromiseFunction,
         });
 
         render(
@@ -110,6 +155,8 @@ describe('Page list groups', () => {
             ],
             title,
             isLoading: false,
+            isShowButtonRetry: false,
+            onClickRetry: emptyPromiseFunction,
         });
 
         render(
@@ -141,6 +188,8 @@ describe('Page list groups', () => {
             list,
             title,
             isLoading: false,
+            isShowButtonRetry: false,
+            onClickRetry: emptyPromiseFunction,
         });
 
         render(
