@@ -1,11 +1,13 @@
-import axios from 'axios';
+import axios, { HttpStatusCode } from 'axios';
 import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
+import { GetListGroupsResult } from '@/core/features/group/models/GetListGroupsResult';
+import { Toast } from '@/core/features/toast/facades/Toast';
 import { pageListGroupsConstant } from '@/core/pages/list-groups/constants/PageListGroupsConstant';
 import { BASE_API_URL } from '@/framework/constants/Api';
 import { store } from '@/framework/store';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, renderHook, screen, waitFor } from '@testing-library/react';
 
 import ListGroups from './';
 import * as hooks from './hooks';
@@ -54,6 +56,26 @@ describe('Page list groups', () => {
         await waitFor(async () => {
             const loadingElement = await screen.findByTestId('loading');
             expect(loadingElement).toBeInTheDocument();
+        });
+    });
+
+    it('fetch data error then show toast error', async () => {
+        const apiResponse = new GetListGroupsResult();
+        apiResponse.message = 'Network Error';
+        apiResponse.responseCode = HttpStatusCode.BadGateway;
+
+        renderHook(() => hooks.useShowMessage(apiResponse));
+
+        render(
+            <Provider store={store}>
+                <ListGroups />
+                <ToastContainer />
+            </Provider>,
+        );
+
+        await waitFor(async () => {
+            const errorElement = await screen.findByText('Network Error');
+            expect(errorElement).toBeInTheDocument();
         });
     });
 
