@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { Questionaire } from '@/core/features/questionaire/facades/Questionaire';
-import { TextToSpeech } from '@/core/features/text-to-speech/facades/TextToSpeech';
+import { TextToSpeechApi } from '@/core/features/text-to-speech/facades/TextToSpeechApi';
 import { VocabularyEntity } from '@/core/features/vocabulary/entities/VocabularyEntity';
 import { AnswerViewModel } from '@/core/features/vocabulary/view-models/AnswerViewModel';
 import { pageTestConstant } from '@/core/pages/test/constants/PageTestConstant';
@@ -177,7 +177,7 @@ function useShowFullInfo(isCompleted: boolean) {
                 return;
             }
 
-            await TextToSpeech.speak(text);
+            await TextToSpeechApi.speak(text);
         },
         [isShowFullInfo],
     );
